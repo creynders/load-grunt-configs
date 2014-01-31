@@ -1,0 +1,226 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Load-grunt-configs by creynders</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Load-grunt-configs</h1>
+        <p>Allows splitting your grunt task configuration into separate files</p>
+
+        <p class="view"><a href="https://github.com/creynders/load-grunt-configs">View the Project on GitHub <small>creynders/load-grunt-configs</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/creynders/load-grunt-configs/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/creynders/load-grunt-configs/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/creynders/load-grunt-configs">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="load-grunt-configs-" class="anchor" href="#load-grunt-configs-"><span class="octicon octicon-link"></span></a>load-grunt-configs <a href="http://travis-ci.org/creynders/load-grunt-configs"><img src="https://secure.travis-ci.org/creynders/load-grunt-configs.png?branch=master" alt="Build Status"></a>
+</h1>
+
+<p>Loads grunt task configurations from separate files.</p>
+
+<p>Grunt files tend to grow fast due to big amount of tasks and their configuration objects.
+This module allows you to split your Grunt task configuration objects into separate files any way you choose.
+I.e. you can even configure targets for a single task in multiple files.</p>
+
+<h2>
+<a name="getting-started" class="anchor" href="#getting-started"><span class="octicon octicon-link"></span></a>Getting Started</h2>
+
+<p>Install the module with: <code>npm install load-grunt-configs --save-dev</code></p>
+
+<div class="highlight highlight-javascript"><pre><span class="c1">// Gruntfile.js</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">grunt</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="s1">'grunt-contrib-jshint'</span><span class="p">);</span>
+
+    <span class="kd">var</span> <span class="nx">configs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'load-grunt-configs'</span><span class="p">)(</span><span class="nx">grunt</span><span class="p">);</span>
+    <span class="nx">grunt</span><span class="p">.</span><span class="nx">initConfig</span><span class="p">(</span><span class="nx">configs</span><span class="p">);</span>
+
+    <span class="nx">grunt</span><span class="p">.</span><span class="nx">registerTask</span><span class="p">(</span><span class="s1">'default'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'jshint'</span><span class="p">]);</span>
+<span class="p">}</span>
+</pre></div>
+
+<div class="highlight highlight-json"><pre><span class="err">//</span> <span class="err">config/jshint.json</span>
+<span class="p">{</span>
+    <span class="nt">"options"</span>   <span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"jshintrc"</span> <span class="p">:</span> <span class="s2">".jshintrc"</span>
+    <span class="p">},</span>
+    <span class="nt">"gruntfile"</span>       <span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"src"</span> <span class="p">:</span> <span class="s2">"Gruntfile.js"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<h2>
+<a name="using-node-modules-for-configuration" class="anchor" href="#using-node-modules-for-configuration"><span class="octicon octicon-link"></span></a>Using node modules for configuration</h2>
+
+<p>Task configuration is also possible through node modules, either by exposing an object:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="c1">//config/jshint.js</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+     <span class="s2">"options"</span>   <span class="o">:</span> <span class="p">{</span>
+         <span class="s2">"jshintrc"</span> <span class="o">:</span> <span class="s2">".jshintrc"</span>
+     <span class="p">},</span>
+     <span class="s2">"gruntfile"</span>       <span class="o">:</span> <span class="p">{</span>
+         <span class="s2">"src"</span> <span class="o">:</span> <span class="s2">"Gruntfile.js"</span>
+     <span class="p">}</span>
+ <span class="p">}</span>
+</pre></div>
+
+<p>Or by exposing a function which returns an object:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="c1">//config/jshint.js</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">grunt</span><span class="p">,</span> <span class="nx">options</span><span class="p">){</span>
+     <span class="k">return</span> <span class="p">{</span>
+         <span class="s2">"options"</span>   <span class="o">:</span> <span class="p">{</span>
+             <span class="s2">"jshintrc"</span> <span class="o">:</span> <span class="s2">".jshintrc"</span>
+         <span class="p">},</span>
+         <span class="s2">"gruntfile"</span>       <span class="o">:</span> <span class="p">{</span>
+             <span class="s2">"src"</span> <span class="o">:</span> <span class="s2">"Gruntfile.js"</span>
+         <span class="p">}</span>
+     <span class="p">}</span>
+ <span class="p">}</span>
+</pre></div>
+
+<h2>
+<a name="declaring-multiple-task-configurations-in-one-file" class="anchor" href="#declaring-multiple-task-configurations-in-one-file"><span class="octicon octicon-link"></span></a>Declaring multiple task configurations in one file</h2>
+
+<p>If the returned object contains a <code>tasks</code> key, its value will be assumed to be a name/configuration pair mapping:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="c1">//config/grunt.json</span>
+<span class="p">{</span>
+    <span class="nx">tasks</span> <span class="o">:</span> <span class="p">{</span>
+        <span class="nx">jshint</span> <span class="o">:</span> <span class="p">{</span>
+            <span class="s2">"options"</span>   <span class="o">:</span> <span class="p">{</span>
+                <span class="s2">"jshintrc"</span> <span class="o">:</span> <span class="s2">".jshintrc"</span>
+            <span class="p">},</span>
+            <span class="s2">"gruntfile"</span>       <span class="o">:</span> <span class="p">{</span>
+                <span class="s2">"src"</span> <span class="o">:</span> <span class="s2">"Gruntfile.js"</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nx">watch</span> <span class="o">:</span> <span class="p">{</span>
+            <span class="s2">"gruntfile"</span>       <span class="o">:</span> <span class="p">{</span>
+                <span class="s2">"src"</span> <span class="o">:</span> <span class="s2">"Gruntfile.js"</span><span class="p">,</span>
+                <span class="s2">"tasks"</span> <span class="o">:</span> <span class="p">[</span><span class="s1">'jshint:gruntfile'</span><span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>The above will configure both the <code>jshint</code> and <code>watch</code> tasks.</p>
+
+<h2>
+<a name="split-multi-task-configurations" class="anchor" href="#split-multi-task-configurations"><span class="octicon octicon-link"></span></a>Split multi-task configurations</h2>
+
+<p>But wait, there is more!
+You can split multi-task configurations in multiple files as well.
+For instance if you have the above <code>config/grunt.json</code> file and you add the following file:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="c1">//config/test.json</span>
+<span class="p">{</span>
+    <span class="nx">tasks</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">jshint</span> <span class="o">:</span> <span class="p">{</span>
+            <span class="s2">"test"</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">"src"</span><span class="o">:</span> <span class="p">[</span><span class="s2">"test/**/*.js"</span><span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="s2">"watch"</span> <span class="o">:</span> <span class="p">{</span>
+            <span class="s2">"test"</span> <span class="o">:</span> <span class="p">{</span>
+                <span class="s2">"src"</span> <span class="o">:</span> <span class="p">[</span><span class="s2">"test/**/*.js"</span><span class="p">],</span>
+                <span class="s2">"tasks"</span> <span class="o">:</span> <span class="p">[</span><span class="s1">'jshint:test'</span><span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>Now both <code>watch</code> and <code>jshint</code> tasks have two targets: <code>gruntfile</code> and <code>test</code>.</p>
+
+<h2>
+<a name="passing-values-to-the-configuration-files" class="anchor" href="#passing-values-to-the-configuration-files"><span class="octicon octicon-link"></span></a>Passing values to the configuration files</h2>
+
+<p>If you declare a function in your config file it receives two arguments: <code>grunt</code> and <code>options</code>, which allows you to use the <code>grunt</code> instance and pass values.</p>
+
+<div class="highlight highlight-javascript"><pre><span class="c1">//Gruntfile.js</span>
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">paths</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">jshintrc</span><span class="o">:</span> <span class="s1">'.jshintrc'</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">configs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'load-grunt-configs'</span><span class="p">)(</span><span class="nx">grunt</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
+
+<span class="c1">//config/jshint.js</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">grunt</span><span class="p">,</span> <span class="nx">options</span><span class="p">){</span>
+     <span class="k">return</span> <span class="p">{</span>
+         <span class="s2">"options"</span>   <span class="o">:</span> <span class="p">{</span>
+             <span class="s2">"jshintrc"</span> <span class="o">:</span> <span class="s2">"&lt;%= options.paths.jshintrc %&gt;"</span>
+         <span class="p">},</span>
+         <span class="s2">"gruntfile"</span>       <span class="o">:</span> <span class="p">{</span>
+             <span class="s2">"src"</span> <span class="o">:</span> <span class="s2">"Gruntfile.js"</span>
+         <span class="p">}</span>
+     <span class="p">};</span>
+<span class="p">}</span>
+</pre></div>
+
+<h2>
+<a name="options" class="anchor" href="#options"><span class="octicon octicon-link"></span></a>Options</h2>
+
+<p>You can modify the directory in which the configuration files need to reside:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="c1">//Gruntfile.js</span>
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">config</span> <span class="o">:</span> <span class="p">{</span>
+        <span class="nx">src</span><span class="o">:</span> <span class="s2">"options/*.js"</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="nx">configs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'load-grunt-configs'</span><span class="p">)(</span><span class="nx">grunt</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
+</pre></div>
+
+<p>Will search for the configuration files in an <code>options</code> directory.</p>
+
+<h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>Copyright (c) 2014 Camille Reynders
+Licensed under the MIT license.</p>
+
+<p>With special thanks to <a href="https://github.com/stefanpenner" class="user-mention">@stefanpenner</a> and <a href="https://github.com/thomasboyt" class="user-mention">@thomasboyt</a>.
+This module is based on the ideas in Thomas' excellent tutorial:
+<a href="http://www.thomasboyt.com/2013/09/01/maintainable-grunt.html">http://www.thomasboyt.com/2013/09/01/maintainable-grunt.html</a></p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/creynders">creynders</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-12080113-2");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
