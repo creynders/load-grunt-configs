@@ -36,7 +36,12 @@
         "grunt-contrib-watch"  : "~0.5.3",
         "load-grunt-tasks"     : "~0.3.0"
     },
-    "keywords"         : [],
+    "keywords"         : [
+        "grunt",
+        "gruntfile",
+        "gruntplugin",
+        "configuration"
+    ],
     "dependencies"     : {
         "grunt" : "~0.4.2",
         "lodash" : "~2.4.1"
