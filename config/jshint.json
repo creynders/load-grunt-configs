@@ -1,0 +1,11 @@
+{
+    "options"   : {
+        "jshintrc" : ".jshintrc"
+    },
+    "lib"       : {
+        "src" : "<%= paths.lib %>"
+    },
+    "build"    : {
+        "src" : "<%= paths.build %>"
+    }
+}
