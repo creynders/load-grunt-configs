@@ -4,7 +4,46 @@ Loads grunt task configurations from separate files.
 
 Grunt files tend to grow fast due to big amount of tasks and their configuration objects.
 This module allows you to split your Grunt task configuration objects into separate files any way you choose.
-I.e. you can even configure targets for a single task in multiple files.
+There are similar modules that allow you to the same, but with `grunt-load-configs` **you can configure targets for a single task in multiple files**.
+
+This means you no longer need to group all task targets into a single file, but can split them up according to their task dependencies. 
+
+For example: you use the `watch` task to recompile your `.scss` files, but also to lint your source `.js` whenever one has changed. Typically you'd add a single `watch` configuration object to configure this, but with `load-grunt-configs` you can split these into several files and group all task targets together whenever it makes sense:
+
+```javascript
+
+//config/css.js
+
+module.exports.tasks={
+    watch:{
+        scss: {
+            files: ['app/sass/*.{scss,sass}'],
+            tasks: ['compass:source']
+        }
+    },
+    compass:{
+        source:{
+            //configuration settings
+        }
+    }
+};
+
+//config/lint.js
+
+module.exports.tasks = {
+    watch : {
+        lint: {
+            files: ['app/{,*/}*.js']
+            tasks: ['jshint:source']
+        }
+    },
+    jshint: {
+        source: {
+            //configuration settings
+        }
+    }
+}
+```
 
 ## Getting Started
 Install the module with: `npm install load-grunt-configs --save-dev`
