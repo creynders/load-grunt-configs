@@ -36,7 +36,45 @@
 
 <p>Grunt files tend to grow fast due to big amount of tasks and their configuration objects.
 This module allows you to split your Grunt task configuration objects into separate files any way you choose.
-I.e. you can even configure targets for a single task in multiple files.</p>
+There are similar modules that allow you to the same, but with <code>grunt-load-configs</code> <strong>you can configure targets for a single task in multiple files</strong>.</p>
+
+<p>This means you no longer need to group all task targets into a single file, but can split them up according to their task dependencies. </p>
+
+<p>For example: you use the <code>watch</code> task to recompile your <code>.scss</code> files, but also to lint your source <code>.js</code> whenever one has changed. Typically you'd add a single <code>watch</code> configuration object to configure this, but with <code>load-grunt-configs</code> you can split these into several files and group all task targets together whenever it makes sense:</p>
+
+<div class="highlight highlight-javascript"><pre>
+<span class="c1">//config/css.js</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">tasks</span><span class="o">=</span><span class="p">{</span>
+    <span class="nx">watch</span><span class="o">:</span><span class="p">{</span>
+        <span class="nx">scss</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">files</span><span class="o">:</span> <span class="p">[</span><span class="s1">'app/sass/*.{scss,sass}'</span><span class="p">],</span>
+            <span class="nx">tasks</span><span class="o">:</span> <span class="p">[</span><span class="s1">'compass:source'</span><span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nx">compass</span><span class="o">:</span><span class="p">{</span>
+        <span class="nx">source</span><span class="o">:</span><span class="p">{</span>
+            <span class="c1">//configuration settings</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="c1">//config/lint.js</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">tasks</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">watch</span> <span class="o">:</span> <span class="p">{</span>
+        <span class="nx">lint</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">files</span><span class="o">:</span> <span class="p">[</span><span class="s1">'app/{,*/}*.js'</span><span class="p">]</span>
+            <span class="nx">tasks</span><span class="o">:</span> <span class="p">[</span><span class="s1">'jshint:source'</span><span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nx">jshint</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">source</span><span class="o">:</span> <span class="p">{</span>
+            <span class="c1">//configuration settings</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
 
 <h2>
 <a name="getting-started" class="anchor" href="#getting-started"><span class="octicon octicon-link"></span></a>Getting Started</h2>
