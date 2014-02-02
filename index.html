@@ -110,11 +110,11 @@ There are similar modules that allow you to the same, but with <code>grunt-load-
 
 <div class="highlight highlight-javascript"><pre><span class="c1">//config/jshint.js</span>
 <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
-     <span class="s2">"options"</span>   <span class="o">:</span> <span class="p">{</span>
-         <span class="s2">"jshintrc"</span> <span class="o">:</span> <span class="s2">".jshintrc"</span>
+     <span class="nx">options</span>   <span class="o">:</span> <span class="p">{</span>
+         <span class="nx">jshintrc</span> <span class="o">:</span> <span class="s2">".jshintrc"</span>
      <span class="p">},</span>
-     <span class="s2">"gruntfile"</span>       <span class="o">:</span> <span class="p">{</span>
-         <span class="s2">"src"</span> <span class="o">:</span> <span class="s2">"Gruntfile.js"</span>
+     <span class="nx">gruntfile</span>       <span class="o">:</span> <span class="p">{</span>
+         <span class="nx">src</span> <span class="o">:</span> <span class="s2">"Gruntfile.js"</span>
      <span class="p">}</span>
  <span class="p">}</span>
 </pre></div>
@@ -124,11 +124,11 @@ There are similar modules that allow you to the same, but with <code>grunt-load-
 <div class="highlight highlight-javascript"><pre><span class="c1">//config/jshint.js</span>
 <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">grunt</span><span class="p">,</span> <span class="nx">options</span><span class="p">){</span>
      <span class="k">return</span> <span class="p">{</span>
-         <span class="s2">"options"</span>   <span class="o">:</span> <span class="p">{</span>
-             <span class="s2">"jshintrc"</span> <span class="o">:</span> <span class="s2">".jshintrc"</span>
+         <span class="nx">options</span>   <span class="o">:</span> <span class="p">{</span>
+             <span class="nx">jshintrc</span> <span class="o">:</span> <span class="s2">".jshintrc"</span>
          <span class="p">},</span>
-         <span class="s2">"gruntfile"</span>       <span class="o">:</span> <span class="p">{</span>
-             <span class="s2">"src"</span> <span class="o">:</span> <span class="s2">"Gruntfile.js"</span>
+         <span class="nx">gruntfile</span>       <span class="o">:</span> <span class="p">{</span>
+             <span class="nx">src</span> <span class="o">:</span> <span class="s2">"Gruntfile.js"</span>
          <span class="p">}</span>
      <span class="p">}</span>
  <span class="p">}</span>
@@ -141,8 +141,8 @@ There are similar modules that allow you to the same, but with <code>grunt-load-
 
 <div class="highlight highlight-javascript"><pre><span class="c1">//config/grunt.json</span>
 <span class="p">{</span>
-    <span class="nx">tasks</span> <span class="o">:</span> <span class="p">{</span>
-        <span class="nx">jshint</span> <span class="o">:</span> <span class="p">{</span>
+    <span class="s2">"tasks"</span> <span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"jshint"</span> <span class="o">:</span> <span class="p">{</span>
             <span class="s2">"options"</span>   <span class="o">:</span> <span class="p">{</span>
                 <span class="s2">"jshintrc"</span> <span class="o">:</span> <span class="s2">".jshintrc"</span>
             <span class="p">},</span>
@@ -150,7 +150,7 @@ There are similar modules that allow you to the same, but with <code>grunt-load-
                 <span class="s2">"src"</span> <span class="o">:</span> <span class="s2">"Gruntfile.js"</span>
             <span class="p">}</span>
         <span class="p">},</span>
-        <span class="nx">watch</span> <span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"watch"</span> <span class="o">:</span> <span class="p">{</span>
             <span class="s2">"gruntfile"</span>       <span class="o">:</span> <span class="p">{</span>
                 <span class="s2">"src"</span> <span class="o">:</span> <span class="s2">"Gruntfile.js"</span><span class="p">,</span>
                 <span class="s2">"tasks"</span> <span class="o">:</span> <span class="p">[</span><span class="s1">'jshint:gruntfile'</span><span class="p">]</span>
@@ -171,8 +171,8 @@ For instance if you have the above <code>config/grunt.json</code> file and you a
 
 <div class="highlight highlight-javascript"><pre><span class="c1">//config/test.json</span>
 <span class="p">{</span>
-    <span class="nx">tasks</span><span class="o">:</span> <span class="p">{</span>
-        <span class="nx">jshint</span> <span class="o">:</span> <span class="p">{</span>
+    <span class="s2">"tasks"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"jshint"</span> <span class="o">:</span> <span class="p">{</span>
             <span class="s2">"test"</span><span class="o">:</span> <span class="p">{</span>
                 <span class="s2">"src"</span><span class="o">:</span> <span class="p">[</span><span class="s2">"test/**/*.js"</span><span class="p">]</span>
             <span class="p">}</span>
@@ -206,11 +206,11 @@ For instance if you have the above <code>config/grunt.json</code> file and you a
 <span class="c1">//config/jshint.js</span>
 <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">grunt</span><span class="p">,</span> <span class="nx">options</span><span class="p">){</span>
      <span class="k">return</span> <span class="p">{</span>
-         <span class="s2">"options"</span>   <span class="o">:</span> <span class="p">{</span>
-             <span class="s2">"jshintrc"</span> <span class="o">:</span> <span class="s2">"&lt;%= options.paths.jshintrc %&gt;"</span>
+         <span class="nx">options</span>   <span class="o">:</span> <span class="p">{</span>
+             <span class="nx">jshintrc</span> <span class="o">:</span> <span class="s2">"&lt;%= options.paths.jshintrc %&gt;"</span>
          <span class="p">},</span>
-         <span class="s2">"gruntfile"</span>       <span class="o">:</span> <span class="p">{</span>
-             <span class="s2">"src"</span> <span class="o">:</span> <span class="s2">"Gruntfile.js"</span>
+         <span class="nx">gruntfile</span>       <span class="o">:</span> <span class="p">{</span>
+             <span class="nx">src</span> <span class="o">:</span> <span class="s2">"Gruntfile.js"</span>
          <span class="p">}</span>
      <span class="p">};</span>
 <span class="p">}</span>
