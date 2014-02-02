@@ -202,6 +202,11 @@ configs = require('load-grunt-configs')(grunt, options);
 
 Will search for the configuration files in an `options` directory.
 
+## Examples
+
+Coming soon. For now you can take a look at the `Gruntfile.js` and the configuration files in the `config` directory of this project.
+
+
 ## License
 Copyright (c) 2014 Camille Reynders
 Licensed under the MIT license.
