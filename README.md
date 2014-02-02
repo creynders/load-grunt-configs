@@ -79,11 +79,11 @@ Task configuration is also possible through node modules, either by exposing an 
 ```javascript
 //config/jshint.js
 module.exports = {
-     "options"   : {
-         "jshintrc" : ".jshintrc"
+     options   : {
+         jshintrc : ".jshintrc"
      },
-     "gruntfile"       : {
-         "src" : "Gruntfile.js"
+     gruntfile       : {
+         src : "Gruntfile.js"
      }
  }
  ```
@@ -94,11 +94,11 @@ module.exports = {
 //config/jshint.js
 module.exports = function(grunt, options){
      return {
-         "options"   : {
-             "jshintrc" : ".jshintrc"
+         options   : {
+             jshintrc : ".jshintrc"
          },
-         "gruntfile"       : {
-             "src" : "Gruntfile.js"
+         gruntfile       : {
+             src : "Gruntfile.js"
          }
      }
  }
@@ -111,8 +111,8 @@ If the returned object contains a `tasks` key, its value will be assumed to be a
 ```javascript
 //config/grunt.json
 {
-    tasks : {
-        jshint : {
+    "tasks" : {
+        "jshint" : {
             "options"   : {
                 "jshintrc" : ".jshintrc"
             },
@@ -120,7 +120,7 @@ If the returned object contains a `tasks` key, its value will be assumed to be a
                 "src" : "Gruntfile.js"
             }
         },
-        watch : {
+        "watch" : {
             "gruntfile"       : {
                 "src" : "Gruntfile.js",
                 "tasks" : ['jshint:gruntfile']
@@ -140,8 +140,8 @@ For instance if you have the above `config/grunt.json` file and you add the foll
 ```javascript
 //config/test.json
 {
-    tasks: {
-        jshint : {
+    "tasks": {
+        "jshint" : {
             "test": {
                 "src": ["test/**/*.js"]
             }
@@ -175,11 +175,11 @@ var configs = require('load-grunt-configs')(grunt, options);
 //config/jshint.js
 module.exports = function(grunt, options){
      return {
-         "options"   : {
-             "jshintrc" : "<%= options.paths.jshintrc %>"
+         options   : {
+             jshintrc : "<%= options.paths.jshintrc %>"
          },
-         "gruntfile"       : {
-             "src" : "Gruntfile.js"
+         gruntfile       : {
+             src : "Gruntfile.js"
          }
      };
 }
