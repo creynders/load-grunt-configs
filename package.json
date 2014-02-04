@@ -32,9 +32,9 @@
         "lib/load-grunt-configs.js"
     ],
     "devDependencies"  : {
-        "grunt-contrib-jshint" : "~0.6.4",
-        "grunt-contrib-watch"  : "~0.5.3",
-        "load-grunt-tasks"     : "~0.3.0"
+    "grunt-contrib-watch": "~0.5.3",
+    "load-grunt-tasks": "~0.3.0",
+    "grunt-coffeelint": "0.0.8"
     },
     "keywords"         : [
         "grunt",
