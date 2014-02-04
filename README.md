@@ -204,7 +204,13 @@ Will search for the configuration files in an `options` directory.
 
 ## Examples
 
-Coming soon. For now you can take a look at the `Gruntfile.js` and the configuration files in the `config` directory of this project.
+You can take a look at the `Gruntfile.js` and the configuration files in the `config` directory of this project.
+Or browse through the 3 demos in this repository:
+
+1. [Configuration per task](https://github.com/creynders/load-grunt-configs/tree/master/demos/1.by-taskname). Each task configuration goes into its own file: `watch.js`, `jshint.js`, `concurrent.js`, ...
+1. [A single configs file](https://github.com/creynders/load-grunt-configs/tree/master/demos/2.single-file). The entirety of the grunt configuration is moved to a seperate file (`grunt.js`). This way the Gruntfile.js only contains task declarations.
+1. [Configuration by task type](https://github.com/creynders/load-grunt-configs/tree/master/demos/3.by-type). Task target configurationsare spread over multiple files and grouped wherever logically it makes sense. 
+E.g. `build.js`, `serve.js`, `test.js`
 
 
 ## License
