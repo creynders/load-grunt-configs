@@ -185,6 +185,27 @@ module.exports = function(grunt, options){
 }
 ```
 
+## Task name prefixed task targets
+
+As a convenience method you can prefix your task targets with the task name, separated by a ":" (colon). This allows you to do this:
+
+```javascript
+//config/monitor.js
+module.exports.tasks = {
+    "watch:test" : {
+        src : ["test/**/*.js"],
+        tasks : ['jshint:test']
+    },
+    "watch:gruntfile"       : {
+        src : "Gruntfile.js",
+        tasks : ['jshint:gruntfile']
+    }
+}
+
+```
+
+This makes it easier when in the future you'd like to move the `watch:gruntfile` task configuration to another file for instance.
+
 ## Options
 
 You can modify the directory in which the configuration files need to reside:
