@@ -5,9 +5,6 @@ module.exports = function(grunt){
 	require('load-grunt-tasks')(grunt);
 
 	var configs = {
-		config : {
-			src: 'config/*.js*'
-		},
 		paths : {
 			"lib"   : ["lib/*.js"],
 			"build" : ["<%= config.src %>", "package.json", "Gruntfile.js"]

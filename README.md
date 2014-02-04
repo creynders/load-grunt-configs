@@ -237,6 +237,7 @@ E.g. `build.js`, `serve.js`, `test.js`
 
 ### v0.2.0
 
+* adds coffeescript support
 * adds parsing of taskname prefixed task targets
 * fixes incorrect handling of functions at task config leaves
 
