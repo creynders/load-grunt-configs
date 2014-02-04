@@ -236,9 +236,19 @@ For instance if you have the above <code>config/grunt.json</code> file and you a
 <h2>
 <a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples</h2>
 
-<p>Coming soon. For now you can take a look at the <code>Gruntfile.js</code> and the configuration files in the <code>config</code> directory of this project.</p>
+<p>You can take a look at the <code>Gruntfile.js</code> and the configuration files in the <code>config</code> directory of this project.
+Or browse through the 3 demos in this repository:</p>
 
-<h2>
+<ol>
+<li>
+<a href="https://github.com/creynders/load-grunt-configs/tree/master/demos/1.by-taskname">Configuration per task</a>. Each task configuration goes into its own file: <code>watch.js</code>, <code>jshint.js</code>, <code>concurrent.js</code>, ...</li>
+<li>
+<a href="https://github.com/creynders/load-grunt-configs/tree/master/demos/2.single-file">A single configs file</a>. The entirety of the grunt configuration is moved to a seperate file (<code>grunt.js</code>). This way the Gruntfile.js only contains task declarations.</li>
+<li>
+<a href="https://github.com/creynders/load-grunt-configs/tree/master/demos/3.by-type">Configuration by task type</a>. Task target configurationsare spread over multiple files and grouped wherever logically it makes sense. 
+E.g. <code>build.js</code>, <code>serve.js</code>, <code>test.js</code>
+</li>
+</ol><h2>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
 
 <p>Copyright (c) 2014 Camille Reynders
