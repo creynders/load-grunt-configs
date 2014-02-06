@@ -236,6 +236,11 @@ E.g. `build.js`, `serve.js`, `test.js`
 
 ## Changelog
 
+### v0.3.0
+
+* disallows function declaration anywhere else than as direct export
+* extracts taskname regardless of file extension
+
 ### v0.2.0
 
 * adds coffeescript support
