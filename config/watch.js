@@ -1,12 +1,16 @@
-module.exports.tasks = function(grunt, options){
+'use strict';
+
+module.exports= function(grunt, options){
 	return {
-		"watch:lib"   : {
-			files : '<%= paths.lib %>',
-			tasks : ['jshint:lib']
-		},
-		"watch:build" : {
-			files : '<%= paths.build %>',
-			tasks : ['jshint:build']
+		tasks:{
+			"watch:lib"   : {
+				files : '<%= paths.lib %>',
+				tasks : ['jshint:lib']
+			},
+			"watch:build" : {
+				files : '<%= paths.build %>',
+				tasks : ['jshint:build']
+			}
 		}
 	};
 };
