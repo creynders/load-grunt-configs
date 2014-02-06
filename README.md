@@ -53,6 +53,7 @@ Install the module with: `npm install load-grunt-configs --save-dev`
 module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
 
+    //loads the various task configuration files
     var configs = require('load-grunt-configs')(grunt);
     grunt.initConfig(configs);
 
@@ -60,17 +61,17 @@ module.exports = function (grunt) {
 }
 ```
 
+To configure the `jshint` task for example, add a file `config/jshint.json`:
+
 ```json
-// config/jshint.json
 {
-    "options"   : {
-        "jshintrc" : ".jshintrc"
-    },
     "gruntfile"       : {
         "src" : "Gruntfile.js"
     }
 }
 ```
+
+By default the basename (without the file extension) of the filename will be used to recognize which task is being configured. `jshint` in the above example.
 
 ## Using node modules for configuration
 
@@ -79,9 +80,6 @@ Task configuration is also possible through node modules, either by exposing an 
 ```javascript
 //config/jshint.js
 module.exports = {
-     options   : {
-         jshintrc : ".jshintrc"
-     },
      gruntfile       : {
          src : "Gruntfile.js"
      }
@@ -94,9 +92,6 @@ module.exports = {
 //config/jshint.js
 module.exports = function(grunt, options){
      return {
-         options   : {
-             jshintrc : ".jshintrc"
-         },
          gruntfile       : {
              src : "Gruntfile.js"
          }
@@ -113,9 +108,6 @@ If the returned object contains a `tasks` key, its value will be assumed to be a
 {
     "tasks" : {
         "jshint" : {
-            "options"   : {
-                "jshintrc" : ".jshintrc"
-            },
             "gruntfile"       : {
                 "src" : "Gruntfile.js"
             }
@@ -175,9 +167,6 @@ var configs = require('load-grunt-configs')(grunt, options);
 //config/jshint.js
 module.exports = function(grunt, options){
      return {
-         options   : {
-             jshintrc : "<%= options.paths.jshintrc %>"
-         },
          gruntfile       : {
              src : "Gruntfile.js"
          }
@@ -233,6 +222,149 @@ Or browse through the 3 demos in this repository:
 1. [Configuration by task type](https://github.com/creynders/load-grunt-configs/tree/master/demos/3.by-type). Task target configurationsare spread over multiple files and grouped wherever logically it makes sense.
 E.g. `build.js`, `serve.js`, `test.js`
 1. [Configuration in coffeescript](https://github.com/creynders/load-grunt-configs/tree/coffee): See `gruntfile.coffee` and the `.coffee` files in the `config` directory
+
+## All various possibilities
+
+* **json with a single task configuration**: E.g. configures `jshint` task in `config/jshint.json` (task name extracted from file name)
+
+```json
+{
+    "gruntfile"       : {
+        "src" : "Gruntfile.js"
+    }
+}
+```
+
+* **json with multiple task configurations**: E.g. configures `jshint` and `watch` tasks in `config/<whatever makes sense to you>.json`. Note the top-most key "tasks" here, it alerts the module not to extract the task name from the file name.
+
+```json
+{
+    "tasks" : {
+        "jshint" : {
+            "gruntfile"       : {
+                "src" : "Gruntfile.js"
+            }
+        },
+        "watch" : {
+            "gruntfile"       : {
+                "src" : "Gruntfile.js",
+                "tasks" : ['jshint:gruntfile']
+            }
+        }
+    }
+}
+```
+
+* **json with multiple task configurations using task prefixed targets**: E.g. configures `jshint` and `watch` tasks in `config/<whatever makes sense to you>.json`
+
+```json
+{
+    "tasks" : {
+        "jshint:gruntfile"       : {
+            "src" : "Gruntfile.js"
+        },
+        "watch:gruntfile"       : {
+            "src" : "Gruntfile.js",
+            "tasks" : ['jshint:gruntfile']
+        }
+    }
+}
+```
+
+* **js with single task configuration as an object**: E.g. configures `jshint` task in `config/jshint.js`
+
+```javascript
+module.exports = {
+     gruntfile       : {
+         src : "Gruntfile.js"
+     }
+};
+```
+
+* **js with single task configuration as a function**: E.g. configures `jshint` task in `config/jshint.js`
+
+```javascript
+module.exports = function(grunt, options){
+    return {
+        gruntfile       : {
+            src : "Gruntfile.js"
+        }
+    };
+};
+```
+
+* **js with multiple task configurations as an object**: E.g. configures `jshint` and `watch` task in `config/<whatever makes sense to you>.js`
+
+```javascript
+module.exports.tasks = { //note the `tasks` export here [!]
+    jshint: {
+        gruntfile       : {
+            src : "Gruntfile.js"
+        }
+    },
+    watch : {
+        gruntfile       : {
+            src : "Gruntfile.js",
+            tasks : ['jshint:gruntfile']
+        }
+    }
+    
+};
+```
+
+* **js with multiple task configurations as a function**: E.g. configures `jshint` and `watch` task in `config/<whatever makes sense to you>.js`
+
+```javascript
+module.exports = function(grunt, options) {
+    return {
+        tasks:{
+            jshint: {
+                gruntfile       : {
+                    src : "Gruntfile.js"
+                }
+            },
+            watch : {
+                gruntfile       : {
+                    src : "Gruntfile.js",
+                    tasks : ['jshint:gruntfile']
+                }
+            }
+        }
+    };
+};
+```
+
+* **js with multiple task configurations as an object using task prefixed targets**: E.g. configures `jshint` and `watch` task in `config/<whatever makes sense to you>.js`
+
+```javascript
+module.exports.tasks = { //note the `tasks` export here [!]
+    "jshint:gruntfile"       : {
+        src : "Gruntfile.js"
+    },
+    "watch:gruntfile"       : {
+            src : "Gruntfile.js",
+            tasks : ['jshint:gruntfile']
+    }
+};
+```
+
+* **js with multiple task configurations as a function using task prefixed targets**: E.g. configures `jshint` and `watch` task in `config/<whatever makes sense to you>.js`
+
+```javascript
+module.exports = function(grunt, options) {
+    return {
+        tasks:{
+            "jshint:gruntfile"       : {
+                src : "Gruntfile.js"
+            },
+            "watch:gruntfile"       : {
+                src : "Gruntfile.js",
+                tasks : ['jshint:gruntfile']
+            }
+        }
+    };
+};
+```
 
 ## Changelog
 
