@@ -1,6 +1,7 @@
-module.exports.tasks = (grunt, options) ->
+module.exports = (grunt, options) ->
   return {
-    "watch:build":
-      files: '<%= paths.build %>'
-      tasks: ['coffeelint:build']
+    tasks:
+      "watch:build":
+        files: '<%= paths.build %>'
+        tasks: ['coffeelint:build']
   }
