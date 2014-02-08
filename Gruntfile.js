@@ -1,13 +1,13 @@
 'use strict';
 
 module.exports = function(grunt){
-
 	require('load-grunt-tasks')(grunt);
 
 	var configs = {
 		paths : {
 			"lib"   : ["lib/*.js"],
-			"build" : ["<%= config.src %>", "package.json", "Gruntfile.js"]
+			"build" : ["<%= config.src %>", "package.json", "Gruntfile.js"],
+			"test"	: ["test/**/*.js"]
 		}
 	};
 

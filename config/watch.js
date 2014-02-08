@@ -10,6 +10,10 @@ module.exports= function(grunt, options){
 			"watch:build" : {
 				files : '<%= paths.build %>',
 				tasks : ['jshint:build']
+			},
+			"watch:test" :{
+				files : '<%= paths.test %>',
+				tasks : ['jshint:test', 'nodeunit']
 			}
 		}
 	};
