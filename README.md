@@ -1,4 +1,4 @@
-# load-grunt-configs [![Build Status](https://secure.travis-ci.org/creynders/load-grunt-configs.png?branch=master)](http://travis-ci.org/creynders/load-grunt-configs)
+# load-grunt-configs [![GitHub version](https://badge.fury.io/gh/creynders%2Fload-grunt-configs.png)](http://badge.fury.io/gh/creynders%2Fload-grunt-configs)[![Build Status](https://secure.travis-ci.org/creynders/load-grunt-configs.png?branch=master)](http://travis-ci.org/creynders/load-grunt-configs)
 
 Loads grunt task configurations from separate files.
 
