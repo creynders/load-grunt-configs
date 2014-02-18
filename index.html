@@ -35,15 +35,20 @@
 <a name="load-grunt-configs-" class="anchor" href="#load-grunt-configs-"><span class="octicon octicon-link"></span></a>load-grunt-configs <a href="http://badge.fury.io/gh/creynders%2Fload-grunt-configs"><img src="https://badge.fury.io/gh/creynders%2Fload-grunt-configs.png" alt="GitHub version"></a><a href="http://travis-ci.org/creynders/load-grunt-configs"><img src="https://secure.travis-ci.org/creynders/load-grunt-configs.png?branch=master" alt="Build Status"></a>
 </h1>
 
+<blockquote>
 <p>Loads grunt task configurations from separate files.</p>
+</blockquote>
 
 <p>Grunt files tend to grow fast due to big amount of tasks and their configuration objects.
-This module allows you to split your Grunt task configuration objects into separate files any way you choose.
+<strong>This module allows you to split your Grunt task configuration objects into separate files any way you choose.</strong>
 There are similar modules that allow you to the same, but with <code>grunt-load-configs</code> <strong>you can configure targets for a single task in multiple files</strong>.</p>
 
 <p>This means you no longer need to group all task targets into a single file, but can split them up according to their task dependencies.</p>
 
-<p>For example: you use the <code>watch</code> task to recompile your <code>.scss</code> files, but also to lint your source <code>.js</code> whenever one has changed. Typically you'd add a single <code>watch</code> configuration object to configure this, but with <code>load-grunt-configs</code> you can split these into several files and group all task targets together whenever it makes sense:</p>
+<h4>
+<a name="example" class="anchor" href="#example"><span class="octicon octicon-link"></span></a>Example</h4>
+
+<p>you use the <code>watch</code> task to recompile your <code>.scss</code> files, but also to lint your source <code>.js</code> whenever one has changed. Typically you'd add a single <code>watch</code> configuration object to configure this, but with <code>load-grunt-configs</code> you can split these into several files and group all task targets together whenever it makes sense:</p>
 
 <div class="highlight highlight-javascript"><pre>
 <span class="c1">//config/css.js</span>
@@ -82,7 +87,27 @@ There are similar modules that allow you to the same, but with <code>grunt-load-
 <h2>
 <a name="getting-started" class="anchor" href="#getting-started"><span class="octicon octicon-link"></span></a>Getting Started</h2>
 
-<p>Install the module with: <code>npm install load-grunt-configs --save-dev</code></p>
+<h3>
+<a name="migrating-your-configuration-from-a-big-fat-grunt-file" class="anchor" href="#migrating-your-configuration-from-a-big-fat-grunt-file"><span class="octicon octicon-link"></span></a>Migrating your configuration from a big, fat grunt file</h3>
+
+<p>I wrote a small utility Grunt task which takes your full-blown Grunt configuration and automatically splits it into separate files: <a href="https://github.com/creynders/grunt-generate-configs">grunt-generate-configs</a></p>
+
+<p><strong>You only need to do this once</strong>:</p>
+
+<pre lang="shell"><code>npm install grunt-generate-configs
+grunt generate-configs
+</code></pre>
+
+<p>This will create a separate <code>.json</code> file for each task inside a <code>config</code> directory. (See <a href="https://github.com/creynders/grunt-generate-configs">grunt-generate-configs</a> for all options: <code>.js</code> files instead of <code>.json</code>, a different directory, etc.)</p>
+
+<p>Next you need to delete the full configuration object in your <code>Gruntfile.js</code>.</p>
+
+<p>Then ...</p>
+
+<h3>
+<a name="automatically-loading-the-config-files" class="anchor" href="#automatically-loading-the-config-files"><span class="octicon octicon-link"></span></a>Automatically loading the config files</h3>
+
+<p>Install the <em>load-grunt-configs</em> module with: <code>npm install load-grunt-configs --save-dev</code></p>
 
 <div class="highlight highlight-javascript"><pre><span class="c1">// Gruntfile.js</span>
 <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">grunt</span><span class="p">)</span> <span class="p">{</span>
@@ -96,7 +121,7 @@ There are similar modules that allow you to the same, but with <code>grunt-load-
 <span class="p">}</span>
 </pre></div>
 
-<p>To configure the <code>jshint</code> task for example, add a file <code>config/jshint.json</code>:</p>
+<p>To configure the <code>jshint</code> task for example, add a file <code>config/jshint.json</code> (in case you didn't use the generator to automatically generate it):</p>
 
 <div class="highlight highlight-json"><pre><span class="p">{</span>
     <span class="nt">"gruntfile"</span>       <span class="p">:</span> <span class="p">{</span>
@@ -108,7 +133,10 @@ There are similar modules that allow you to the same, but with <code>grunt-load-
 <p>By default the basename (without the file extension) of the filename will be used to recognize which task is being configured. <code>jshint</code> in the above example.</p>
 
 <h2>
-<a name="using-node-modules-for-configuration" class="anchor" href="#using-node-modules-for-configuration"><span class="octicon octicon-link"></span></a>Using node modules for configuration</h2>
+<a name="advanced-usage" class="anchor" href="#advanced-usage"><span class="octicon octicon-link"></span></a>Advanced usage</h2>
+
+<h3>
+<a name="using-node-modules-for-configuration" class="anchor" href="#using-node-modules-for-configuration"><span class="octicon octicon-link"></span></a>Using node modules for configuration</h3>
 
 <p>Task configuration is also possible through node modules, either by exposing an object:</p>
 
@@ -132,8 +160,8 @@ There are similar modules that allow you to the same, but with <code>grunt-load-
  <span class="p">}</span>
 </pre></div>
 
-<h2>
-<a name="declaring-multiple-task-configurations-in-one-file" class="anchor" href="#declaring-multiple-task-configurations-in-one-file"><span class="octicon octicon-link"></span></a>Declaring multiple task configurations in one file</h2>
+<h3>
+<a name="declaring-multiple-task-configurations-in-one-file" class="anchor" href="#declaring-multiple-task-configurations-in-one-file"><span class="octicon octicon-link"></span></a>Declaring multiple task configurations in one file</h3>
 
 <p>If the returned object contains a <code>tasks</code> key, its value will be assumed to be a name/configuration pair mapping:</p>
 
@@ -157,8 +185,8 @@ There are similar modules that allow you to the same, but with <code>grunt-load-
 
 <p>The above will configure both the <code>jshint</code> and <code>watch</code> tasks.</p>
 
-<h2>
-<a name="split-multi-task-configurations" class="anchor" href="#split-multi-task-configurations"><span class="octicon octicon-link"></span></a>Split multi-task configurations</h2>
+<h3>
+<a name="split-multi-task-configurations" class="anchor" href="#split-multi-task-configurations"><span class="octicon octicon-link"></span></a>Split multi-task configurations</h3>
 
 <p>But wait, there is more!
 You can split multi-task configurations in multiple files as well.
@@ -184,8 +212,8 @@ For instance if you have the above <code>config/grunt.json</code> file and you a
 
 <p>Now both <code>watch</code> and <code>jshint</code> tasks have two targets: <code>gruntfile</code> and <code>test</code>.</p>
 
-<h2>
-<a name="passing-values-to-the-configuration-files" class="anchor" href="#passing-values-to-the-configuration-files"><span class="octicon octicon-link"></span></a>Passing values to the configuration files</h2>
+<h3>
+<a name="passing-values-to-the-configuration-files" class="anchor" href="#passing-values-to-the-configuration-files"><span class="octicon octicon-link"></span></a>Passing values to the configuration files</h3>
 
 <p>If you declare a function in your config file it receives two arguments: <code>grunt</code> and <code>options</code>, which allows you to use the <code>grunt</code> instance and pass values.</p>
 
@@ -208,8 +236,8 @@ For instance if you have the above <code>config/grunt.json</code> file and you a
 <span class="p">}</span>
 </pre></div>
 
-<h2>
-<a name="task-name-prefixed-task-targets" class="anchor" href="#task-name-prefixed-task-targets"><span class="octicon octicon-link"></span></a>Task name prefixed task targets</h2>
+<h3>
+<a name="task-name-prefixed-task-targets" class="anchor" href="#task-name-prefixed-task-targets"><span class="octicon octicon-link"></span></a>Task name prefixed task targets</h3>
 
 <p>As a convenience method you can prefix your task targets with the task name, separated by a ":" (colon). This allows you to do this:</p>
 
