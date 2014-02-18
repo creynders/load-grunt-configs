@@ -1,14 +1,16 @@
 # load-grunt-configs [![GitHub version](https://badge.fury.io/gh/creynders%2Fload-grunt-configs.png)](http://badge.fury.io/gh/creynders%2Fload-grunt-configs)[![Build Status](https://secure.travis-ci.org/creynders/load-grunt-configs.png?branch=master)](http://travis-ci.org/creynders/load-grunt-configs)
 
-Loads grunt task configurations from separate files.
+> Loads grunt task configurations from separate files.
 
 Grunt files tend to grow fast due to big amount of tasks and their configuration objects.
-This module allows you to split your Grunt task configuration objects into separate files any way you choose.
+**This module allows you to split your Grunt task configuration objects into separate files any way you choose.**
 There are similar modules that allow you to the same, but with `grunt-load-configs` **you can configure targets for a single task in multiple files**.
 
 This means you no longer need to group all task targets into a single file, but can split them up according to their task dependencies.
 
-For example: you use the `watch` task to recompile your `.scss` files, but also to lint your source `.js` whenever one has changed. Typically you'd add a single `watch` configuration object to configure this, but with `load-grunt-configs` you can split these into several files and group all task targets together whenever it makes sense:
+#### Example
+
+you use the `watch` task to recompile your `.scss` files, but also to lint your source `.js` whenever one has changed. Typically you'd add a single `watch` configuration object to configure this, but with `load-grunt-configs` you can split these into several files and group all task targets together whenever it makes sense:
 
 ```javascript
 
@@ -46,7 +48,27 @@ module.exports.tasks = {
 ```
 
 ## Getting Started
-Install the module with: `npm install load-grunt-configs --save-dev`
+
+### Migrating your configuration from a big, fat grunt file
+
+I wrote a small utility Grunt task which takes your full-blown Grunt configuration and automatically splits it into separate files: [grunt-generate-configs][grunt-generate-configs]
+
+**You only need to do this once**:
+
+```shell
+npm install grunt-generate-configs
+grunt generate-configs
+```
+
+This will create a separate `.json` file for each task inside a `config` directory. (See [grunt-generate-configs][grunt-generate-configs] for all options: `.js` files instead of `.json`, a different directory, etc.)
+
+Next you need to delete the full configuration object in your `Gruntfile.js`.
+
+Then ...
+
+### Automatically loading the config files
+
+Install the _load-grunt-configs_ module with: `npm install load-grunt-configs --save-dev`
 
 ```javascript
 // Gruntfile.js
@@ -61,7 +83,7 @@ module.exports = function (grunt) {
 }
 ```
 
-To configure the `jshint` task for example, add a file `config/jshint.json`:
+To configure the `jshint` task for example, add a file `config/jshint.json` (in case you didn't use the generator to automatically generate it):
 
 ```json
 {
@@ -73,7 +95,9 @@ To configure the `jshint` task for example, add a file `config/jshint.json`:
 
 By default the basename (without the file extension) of the filename will be used to recognize which task is being configured. `jshint` in the above example.
 
-## Using node modules for configuration
+## Advanced usage
+
+### Using node modules for configuration
 
 Task configuration is also possible through node modules, either by exposing an object:
 
@@ -99,7 +123,7 @@ module.exports = function(grunt, options){
  }
 ```
 
-## Declaring multiple task configurations in one file
+### Declaring multiple task configurations in one file
 
 If the returned object contains a `tasks` key, its value will be assumed to be a name/configuration pair mapping:
 
@@ -123,7 +147,7 @@ If the returned object contains a `tasks` key, its value will be assumed to be a
 ```
 The above will configure both the `jshint` and `watch` tasks.
 
-## Split multi-task configurations
+### Split multi-task configurations
 
 But wait, there is more!
 You can split multi-task configurations in multiple files as well.
@@ -150,7 +174,7 @@ For instance if you have the above `config/grunt.json` file and you add the foll
 
 Now both `watch` and `jshint` tasks have two targets: `gruntfile` and `test`.
 
-## Passing values to the configuration files
+### Passing values to the configuration files
 
 If you declare a function in your config file it receives two arguments: `grunt` and `options`, which allows you to use the `grunt` instance and pass values.
 
@@ -174,7 +198,7 @@ module.exports = function(grunt, options){
 }
 ```
 
-## Task name prefixed task targets
+### Task name prefixed task targets
 
 As a convenience method you can prefix your task targets with the task name, separated by a ":" (colon). This allows you to do this:
 
@@ -308,7 +332,7 @@ module.exports.tasks = { //note the `tasks` export here [!]
             tasks : ['jshint:gruntfile']
         }
     }
-    
+
 };
 ```
 
@@ -393,3 +417,6 @@ Licensed under the MIT license.
 With special thanks to @stefanpenner and @thomasboyt.
 This module is based on the ideas in Thomas' excellent tutorial:
 http://www.thomasboyt.com/2013/09/01/maintainable-grunt.html
+
+
+[grunt-generate-configs]: https://github.com/creynders/grunt-generate-configs
