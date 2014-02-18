@@ -22,4 +22,12 @@ module.exports = function(grunt){
 	grunt.registerTask('default', ['jshint']);
 	grunt.registerTask('vigilant', ['watch']);
 
+    grunt.registerTask('preview',
+    [
+        'clean:tmp',
+        'markdown:docs',
+        'connect:livereload',
+        'watch'
+    ]);
+
 };

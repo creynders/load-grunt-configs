@@ -1,52 +1,58 @@
 {
-  "name": "load-grunt-configs",
-  "description": "Loads grunt task configurations from separate files",
-  "version": "0.3.1",
-  "homepage": "http://creynders.github.io/load-grunt-configs/",
-  "author": {
-    "name": "Camille Reynders",
-    "email": "info@creynders.be",
-    "url": "www.creynders.be"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/creynders/load-grunt-configs.git"
-  },
-  "bugs": {
-    "url": "https://github.com/creynders/load-grunt-configs/issues"
-  },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/creynders/load-grunt-configs/blob/master/LICENSE-MIT"
+    "name"            : "load-grunt-configs",
+    "description"     : "Loads grunt task configurations from separate files",
+    "version"         : "0.3.1",
+    "homepage"        : "http://creynders.github.io/load-grunt-configs/",
+    "author"          : {
+        "name"  : "Camille Reynders",
+        "email" : "info@creynders.be",
+        "url"   : "www.creynders.be"
+    },
+    "repository"      : {
+        "type" : "git",
+        "url"  : "git://github.com/creynders/load-grunt-configs.git"
+    },
+    "bugs"            : {
+        "url" : "https://github.com/creynders/load-grunt-configs/issues"
+    },
+    "licenses"        :
+    [
+        {
+            "type" : "MIT",
+            "url"  : "https://github.com/creynders/load-grunt-configs/blob/master/LICENSE-MIT"
+        }
+    ],
+    "main"            : "lib/load-grunt-configs",
+    "scripts"         : {
+        "test" : "grunt nodeunit"
+    },
+    "engines"         : {
+        "node" : ">= 0.8.0"
+    },
+    "files"           :
+    [
+        "lib/load-grunt-configs.js"
+    ],
+    "devDependencies" : {
+        "grunt-contrib-clean"    : "~0.4.0",
+        "grunt-contrib-jshint"   : "~0.6.4",
+        "grunt-contrib-watch"    : "~0.5.3",
+        "load-grunt-tasks"       : "~0.3.0",
+        "grunt-contrib-nodeunit" : "~0.3.0",
+        "node-uuid"              : "~1.4.1",
+        "proxyquire"             : "~0.5.2",
+        "grunt-markdown"         : "~0.5.0",
+        "grunt-contrib-connect"  : "~0.6.0"
+    },
+    "keywords"        :
+    [
+        "grunt",
+        "gruntfile",
+        "gruntplugin",
+        "configuration"
+    ],
+    "dependencies"    : {
+        "grunt"  : "~0.4.2",
+        "lodash" : "~2.4.1"
     }
-  ],
-  "main": "lib/load-grunt-configs",
-  "scripts": {
-    "test": "grunt nodeunit"
-  },
-  "engines": {
-    "node": ">= 0.8.0"
-  },
-  "files": [
-    "lib/load-grunt-configs.js"
-  ],
-  "devDependencies": {
-    "grunt-contrib-jshint": "~0.6.4",
-    "grunt-contrib-watch": "~0.5.3",
-    "load-grunt-tasks": "~0.3.0",
-    "grunt-contrib-nodeunit": "~0.3.0",
-    "node-uuid": "~1.4.1",
-    "proxyquire": "~0.5.2"
-  },
-  "keywords": [
-    "grunt",
-    "gruntfile",
-    "gruntplugin",
-    "configuration"
-  ],
-  "dependencies": {
-    "grunt": "~0.4.2",
-    "lodash": "~2.4.1"
-  }
 }
