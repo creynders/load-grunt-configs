@@ -418,5 +418,6 @@ With special thanks to @stefanpenner and @thomasboyt.
 This module is based on the ideas in Thomas' excellent tutorial:
 http://www.thomasboyt.com/2013/09/01/maintainable-grunt.html
 
+[![Analytics](https://ga-beacon.appspot.com/UA-12080113-4/load-grunt-configs/README.md)](https://github.com/igrigorik/ga-beacon)
 
 [grunt-generate-configs]: https://github.com/creynders/grunt-generate-configs
