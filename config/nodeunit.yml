@@ -1,0 +1,2 @@
+all:
+  ['test/*_test.js']
