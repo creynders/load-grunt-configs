@@ -44,6 +44,9 @@
         "grunt-markdown"         : "~0.5.0",
         "grunt-contrib-connect"  : "~0.6.0"
     },
+    "peerDependencies" : {
+        "grunt"  : "~0.4.2"
+    },
     "keywords"        :
     [
         "grunt",
@@ -52,7 +55,6 @@
         "configuration"
     ],
     "dependencies"    : {
-        "grunt"  : "~0.4.2",
         "lodash" : "~2.4.1"
     }
 }
