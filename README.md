@@ -392,6 +392,18 @@ module.exports = function(grunt, options) {
 
 ## Changelog
 
+### v0.3.2
+
+* fixes incorrect grunt dep
+* adds coffee config file
+* adds yaml support
+
+### v0.3.1
+
+* fixes incorrect overwrite of passedin options for this task
+* adds tests
+* Updates examples and adds all various configuration possibilities
+
 ### v0.3.0
 
 * disallows function declaration anywhere else than as direct export
