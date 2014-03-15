@@ -51,7 +51,7 @@ module.exports.tasks = {
 
 ### Migrating your configuration from a big, fat grunt file
 
-I wrote a small utility Grunt task which takes your full-blown Grunt configuration and automatically splits it into separate files: [grunt-generate-configs][grunt-generate-configs]
+I wrote a small utility Grunt task which takes your full-blown Grunt configuration and automatically splits it into separate files: [grunt-generate-configs][grunt-generate-configs] (you can choose between `.js`, `.coffee`, `.yaml` and the default `.json`)
 
 **You only need to do this once**:
 
@@ -60,7 +60,7 @@ npm install grunt-generate-configs
 grunt generate-configs
 ```
 
-This will create a separate `.json` file for each task inside a `config` directory. (See [grunt-generate-configs][grunt-generate-configs] for all options: `.js` files instead of `.json`, a different directory, etc.)
+This will create a separate `.json` file for each task inside a `config` directory. (See [grunt-generate-configs][grunt-generate-configs] for all options: `.coffee`, `yaml` or `.js` files instead of `.json`, a different directory, etc.)
 
 Next you need to delete the full configuration object in your `Gruntfile.js`.
 
@@ -82,6 +82,8 @@ module.exports = function (grunt) {
     grunt.registerTask('default', ['jshint']);
 }
 ```
+
+`load-grunt-configs` supports the loading of config files as `.js`, `.json`, `.yaml` or `.coffee`. You can even mix and match if you want. Take a look at the [`config`](https://github.com/creynders/load-grunt-configs/tree/master/config) folder of this project to see examples for all formats.
 
 To configure the `jshint` task for example, add a file `config/jshint.json` (in case you didn't use the generator to automatically generate it):
 
