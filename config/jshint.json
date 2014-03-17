@@ -3,12 +3,12 @@
         "jshintrc" : ".jshintrc"
     },
     "lib"       : {
-        "src" : "<%= paths.lib %>"
+        "src" : "<%= config.paths.lib %>"
     },
     "build"    : {
-        "src" : "<%= paths.build %>"
+        "src" : "<%= config.paths.build %>"
     },
     "test" : {
-        "src" : "<%= paths.test %>"
+        "src" : "<%= config.paths.test %>"
     }
 }

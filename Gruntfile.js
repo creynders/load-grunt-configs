@@ -1,33 +1,39 @@
 'use strict';
 
-module.exports = function(grunt){
-	require('load-grunt-tasks')(grunt);
+module.exports = function( grunt ){
 
-	var configs = {
-		paths : {
-			"lib"   : ["lib/*.js"],
-			"build" : ["<%= config.src %>", "package.json", "Gruntfile.js"],
-			"test"	: ["test/**/*.js"]
-		}
-	};
+    require( 'load-grunt-tasks' )( grunt );
 
-	var loadConfigs = require('./lib/load-grunt-configs');
+    var configs = {
+        config : {
+            paths : {
+                "lib"   : ["lib/*.js"],
+                "build" : ["config/*.js*", "package.json", "Gruntfile.js"],
+                "test"  : ["test/**/*.js"]
+            }
+        }
+    };
 
-	configs = loadConfigs(grunt, configs);
+    var loadConfigs = require( './lib/load-grunt-configs' );
 
-	// Project configuration.
-	grunt.initConfig(configs);
+    configs = loadConfigs( grunt, configs );
 
-	// Default task.
-	grunt.registerTask('default', ['jshint']);
-	grunt.registerTask('vigilant', ['watch']);
+    // Project configuration.
+    grunt.initConfig( configs );
 
-    grunt.registerTask('preview',
-    [
-        'clean:tmp',
-        'markdown:docs',
-        'connect:livereload',
-        'watch'
-    ]);
+    // Default task.
+    grunt.registerTask( 'default', ['jshint'] );
+    grunt.registerTask( 'vigilant', ['watch'] );
+
+    grunt.registerTask( 'serve', function(target){
+        if('docs' === target){
+            grunt.task.run( [
+                'clean:tmp',
+                'markdown:docs',
+                'connect:docs',
+                'watch:docs'
+            ] );
+        }
+    } );
 
 };

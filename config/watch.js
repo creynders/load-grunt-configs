@@ -3,21 +3,21 @@
 module.exports = function(grunt, options){
     return {
         lib        : {
-            files : '<%= paths.lib %>',
+            files : '<%= config.paths.lib %>',
             tasks :
             [
                 'jshint:lib'
             ]
         },
         build      : {
-            files : '<%= paths.build %>',
+            files : '<%= config.paths.build %>',
             tasks :
             [
                 'jshint:build'
             ]
         },
         test       : {
-            files : '<%= paths.test %>',
+            files : '<%= config.paths.test %>',
             tasks :
             [
                 'jshint:test',

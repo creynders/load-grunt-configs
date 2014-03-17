@@ -3,11 +3,10 @@
 var _ = require('lodash');
 var grunt = require('grunt');
 var pq = require('proxyquire').noCallThru();
-var stubs = require('./fixtures/stubs');
-var configs = require('./fixtures/configs');
+var stubs = require('./support/stubs');
+var configs = require('./support/configs');
 var stubDeps = _.cloneDeep(configs);
 stubDeps.path = stubs.path;
-
 var loadGruntConfigs = pq('../lib/load-grunt-configs',stubDeps);
 var uuid = require('node-uuid');
 
@@ -20,7 +19,7 @@ exports['suite'] = function(test){
 exports['should use passed in options for this task'] = function(test){
 	test.expect(1);
 	var config = {config:{src:[uuid.v4()]}};
-	var actual = loadGruntConfigs(stubs.grunt([]), config);
+	var actual = loadGruntConfigs(stubs.grunt([]), _.cloneDeep(config));
 	test.deepEqual(actual, config);
 	test.done();
 };

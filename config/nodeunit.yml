@@ -1,2 +1,2 @@
-all:
-  ['test/*_test.js']
+load_grunt_configs:
+  ['test/load-grunt-configs_test.js']

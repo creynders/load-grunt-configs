@@ -14,7 +14,10 @@ module.exports.grunt = function(files){
 			expand : function(){
 				return files;
 			}
-		}
+		},
+        option : function(){
+            return false;
+        }
 	};
 };
 
