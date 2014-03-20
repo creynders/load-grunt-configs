@@ -49,9 +49,20 @@ module.exports.tasks = {
 
 ## Getting Started
 
+`load-grunt-configs` supports the loading of grunt config files in following formats:
+
+* **json**
+* **js** modules
+* **coffee** modules
+* **cson**
+* **yaml**
+
+Though the provided examples are mainly for `json` files and `js` modules, the same applies to the other formats.
+You can find examples of all formats in the [`config`][config] directory of this project.
+
 ### Migrating your configuration from a big, fat grunt file
 
-I wrote a small utility Grunt task which takes your full-blown Grunt configuration and automatically splits it into separate files: [grunt-generate-configs][grunt-generate-configs] (you can choose between `.js`, `.coffee`, `.yaml` and the default `.json`)
+I wrote a small utility Grunt task which takes your full-blown Grunt configuration and automatically splits it into separate files: [grunt-generate-configs][grunt-generate-configs] (supports all formats `load-grunt-configs` does too)
 
 **You only need to do this once**:
 
@@ -60,7 +71,7 @@ npm install grunt-generate-configs
 grunt generate-configs
 ```
 
-This will create a separate `.json` file for each task inside a `config` directory. (See [grunt-generate-configs][grunt-generate-configs] for all options: `.coffee`, `yaml` or `.js` files instead of `.json`, a different directory, etc.)
+This will create a separate `.json` file for each task inside a `config` directory. (See [grunt-generate-configs][grunt-generate-configs] for all options: a different format, directory, etc.)
 
 Next you need to delete the full configuration object in your `Gruntfile.js`.
 
@@ -83,7 +94,7 @@ module.exports = function (grunt) {
 }
 ```
 
-`load-grunt-configs` supports the loading of config files as `.js`, `.json`, `.yaml` or `.coffee`. You can even mix and match if you want. Take a look at the [`config`](https://github.com/creynders/load-grunt-configs/tree/master/config) folder of this project to see examples for all formats.
+`load-grunt-configs` supports the loading of config files as `.js`, `.json`, `.yaml` or `.coffee`. You can even mix and match if you want. Take a look at the [`config`][config] folder of this project to see examples for all formats.
 
 To configure the `jshint` task for example, add a file `config/jshint.json` (in case you didn't use the generator to automatically generate it):
 
@@ -247,7 +258,7 @@ Or browse through the 3 demos in this repository:
 1. [A single configs file](https://github.com/creynders/load-grunt-configs/tree/master/demos/2.single-file). The entirety of the grunt configuration is moved to a seperate file (`grunt.js`). This way the Gruntfile.js only contains task declarations.
 1. [Configuration by task type](https://github.com/creynders/load-grunt-configs/tree/master/demos/3.by-type). Task target configurationsare spread over multiple files and grouped wherever logically it makes sense.
 E.g. `build.js`, `serve.js`, `test.js`
-1. [Configuration in coffeescript](https://github.com/creynders/load-grunt-configs/tree/coffee): See `gruntfile.coffee` and the `.coffee` files in the `config` directory
+1. [Various formats][config]: See the `config` directory of this project.
 
 ## All various possibilities
 
@@ -394,30 +405,35 @@ module.exports = function(grunt, options) {
 
 ## Changelog
 
-### v0.3.2
+#### v0.3.3
+
+* Add cson support
+* Loads yaml files with safeLoad
+
+#### v0.3.2
 
 * fixes incorrect grunt dep
 * adds coffee config file
 * adds yaml support
 
-### v0.3.1
+#### v0.3.1
 
 * fixes incorrect overwrite of passedin options for this task
 * adds tests
 * Updates examples and adds all various configuration possibilities
 
-### v0.3.0
+#### v0.3.0
 
 * disallows function declaration anywhere else than as direct export
 * extracts taskname regardless of file extension
 
-### v0.2.0
+#### v0.2.0
 
 * adds coffeescript support
 * adds parsing of taskname prefixed task targets
 * fixes incorrect handling of functions at task config leaves
 
-### v0.1.0
+#### v0.1.0
 
 * adds "by type' demo
 * adds "by taskname" demo
@@ -435,3 +451,4 @@ http://www.thomasboyt.com/2013/09/01/maintainable-grunt.html
 [![Analytics](https://ga-beacon.appspot.com/UA-12080113-4/load-grunt-configs/README.md)](https://github.com/igrigorik/ga-beacon)
 
 [grunt-generate-configs]: https://github.com/creynders/grunt-generate-configs
+[config]: https://github.com/creynders/load-grunt-configs/tree/master/config
