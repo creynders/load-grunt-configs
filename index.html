@@ -87,10 +87,23 @@ There are similar modules that allow you to the same, but with <code>grunt-load-
 <h2>
 <a name="getting-started" class="anchor" href="#getting-started"><span class="octicon octicon-link"></span></a>Getting Started</h2>
 
+<p><code>load-grunt-configs</code> supports the loading of grunt config files in following formats:</p>
+
+<ul>
+<li><strong>json</strong></li>
+<li>
+<strong>js</strong> modules</li>
+<li>
+<strong>coffee</strong> modules</li>
+<li><strong>cson</strong></li>
+<li><strong>yaml</strong></li>
+</ul><p>Though the provided examples are mainly for <code>json</code> files and <code>js</code> modules, the same applies to the other formats.
+You can find examples of all formats in the <a href="https://github.com/creynders/load-grunt-configs/tree/master/config"><code>config</code></a> directory of this project.</p>
+
 <h3>
 <a name="migrating-your-configuration-from-a-big-fat-grunt-file" class="anchor" href="#migrating-your-configuration-from-a-big-fat-grunt-file"><span class="octicon octicon-link"></span></a>Migrating your configuration from a big, fat grunt file</h3>
 
-<p>I wrote a small utility Grunt task which takes your full-blown Grunt configuration and automatically splits it into separate files: <a href="https://github.com/creynders/grunt-generate-configs">grunt-generate-configs</a></p>
+<p>I wrote a small utility Grunt task which takes your full-blown Grunt configuration and automatically splits it into separate files: <a href="https://github.com/creynders/grunt-generate-configs">grunt-generate-configs</a> (supports all formats <code>load-grunt-configs</code> does too)</p>
 
 <p><strong>You only need to do this once</strong>:</p>
 
@@ -98,7 +111,7 @@ There are similar modules that allow you to the same, but with <code>grunt-load-
 grunt generate-configs
 </code></pre>
 
-<p>This will create a separate <code>.json</code> file for each task inside a <code>config</code> directory. (See <a href="https://github.com/creynders/grunt-generate-configs">grunt-generate-configs</a> for all options: <code>.js</code> files instead of <code>.json</code>, a different directory, etc.)</p>
+<p>This will create a separate <code>.json</code> file for each task inside a <code>config</code> directory. (See <a href="https://github.com/creynders/grunt-generate-configs">grunt-generate-configs</a> for all options: a different format, directory, etc.)</p>
 
 <p>Next you need to delete the full configuration object in your <code>Gruntfile.js</code>.</p>
 
@@ -120,6 +133,8 @@ grunt generate-configs
     <span class="nx">grunt</span><span class="p">.</span><span class="nx">registerTask</span><span class="p">(</span><span class="s1">'default'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'jshint'</span><span class="p">]);</span>
 <span class="p">}</span>
 </pre></div>
+
+<p><code>load-grunt-configs</code> supports the loading of config files as <code>.js</code>, <code>.json</code>, <code>.yaml</code> or <code>.coffee</code>. You can even mix and match if you want. Take a look at the <a href="https://github.com/creynders/load-grunt-configs/tree/master/config"><code>config</code></a> folder of this project to see examples for all formats.</p>
 
 <p>To configure the <code>jshint</code> task for example, add a file <code>config/jshint.json</code> (in case you didn't use the generator to automatically generate it):</p>
 
@@ -290,7 +305,7 @@ Or browse through the 3 demos in this repository:</p>
 E.g. <code>build.js</code>, <code>serve.js</code>, <code>test.js</code>
 </li>
 <li>
-<a href="https://github.com/creynders/load-grunt-configs/tree/coffee">Configuration in coffeescript</a>: See <code>gruntfile.coffee</code> and the <code>.coffee</code> files in the <code>config</code> directory</li>
+<a href="https://github.com/creynders/load-grunt-configs/tree/master/config">Various formats</a>: See the <code>config</code> directory of this project.</li>
 </ol><h2>
 <a name="all-various-possibilities" class="anchor" href="#all-various-possibilities"><span class="octicon octicon-link"></span></a>All various possibilities</h2>
 
@@ -445,35 +460,41 @@ E.g. <code>build.js</code>, <code>serve.js</code>, <code>test.js</code>
 <h2>
 <a name="changelog" class="anchor" href="#changelog"><span class="octicon octicon-link"></span></a>Changelog</h2>
 
-<h3>
-<a name="v032" class="anchor" href="#v032"><span class="octicon octicon-link"></span></a>v0.3.2</h3>
+<h4>
+<a name="v033" class="anchor" href="#v033"><span class="octicon octicon-link"></span></a>v0.3.3</h4>
+
+<ul>
+<li>Add cson support</li>
+<li>Loads yaml files with safeLoad</li>
+</ul><h4>
+<a name="v032" class="anchor" href="#v032"><span class="octicon octicon-link"></span></a>v0.3.2</h4>
 
 <ul>
 <li>fixes incorrect grunt dep</li>
 <li>adds coffee config file</li>
 <li>adds yaml support</li>
-</ul><h3>
-<a name="v031" class="anchor" href="#v031"><span class="octicon octicon-link"></span></a>v0.3.1</h3>
+</ul><h4>
+<a name="v031" class="anchor" href="#v031"><span class="octicon octicon-link"></span></a>v0.3.1</h4>
 
 <ul>
 <li>fixes incorrect overwrite of passedin options for this task</li>
 <li>adds tests</li>
 <li>Updates examples and adds all various configuration possibilities</li>
-</ul><h3>
-<a name="v030" class="anchor" href="#v030"><span class="octicon octicon-link"></span></a>v0.3.0</h3>
+</ul><h4>
+<a name="v030" class="anchor" href="#v030"><span class="octicon octicon-link"></span></a>v0.3.0</h4>
 
 <ul>
 <li>disallows function declaration anywhere else than as direct export</li>
 <li>extracts taskname regardless of file extension</li>
-</ul><h3>
-<a name="v020" class="anchor" href="#v020"><span class="octicon octicon-link"></span></a>v0.2.0</h3>
+</ul><h4>
+<a name="v020" class="anchor" href="#v020"><span class="octicon octicon-link"></span></a>v0.2.0</h4>
 
 <ul>
 <li>adds coffeescript support</li>
 <li>adds parsing of taskname prefixed task targets</li>
 <li>fixes incorrect handling of functions at task config leaves</li>
-</ul><h3>
-<a name="v010" class="anchor" href="#v010"><span class="octicon octicon-link"></span></a>v0.1.0</h3>
+</ul><h4>
+<a name="v010" class="anchor" href="#v010"><span class="octicon octicon-link"></span></a>v0.1.0</h4>
 
 <ul>
 <li>adds "by type' demo</li>
