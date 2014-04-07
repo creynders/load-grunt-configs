@@ -71,20 +71,21 @@ module.exports.functasks = function(g, o){
 
 module.exports.coloned = {
 	tasks : {
-		"task1:target1:value" : tasks.tasks.task1.target1.value,
-		"task1:target2:value" : tasks.tasks.task1.target2.value,
-		"task2:target1:value" : tasks.tasks.task2.target1.value,
-		"task2:target2:value" : tasks.tasks.task2.target2.value
+		"task1:target1" : tasks.tasks.task1.target1,
+		"task1:target2" : tasks.tasks.task1.target2,
+		"task2:target1" : tasks.tasks.task2.target1,
+		"task2:target2" : tasks.tasks.task2.target2
 	}
 };
 
-module.exports.passedin = {
+var passedin = module.exports.passedin = {
 	task1 : {
 		target1 : 'task 1, target1 default value'
 	},
 	task2 : {
 		target1 : {
-			value1 : 'task2, target1 default value1'
+			value1 : 'task2, target1 default value1',
+            value3 : 'task2, target1 default value3'
 		},
 		target2 : {
 			value1 : 'task2, target2 original value1',
@@ -92,7 +93,8 @@ module.exports.passedin = {
 		}
 	}
 };
-module.exports.overwrite = {
+
+var overwrite = module.exports.overwrite = {
 	tasks : {
 		task1 : {
 			target1 : 'task 1, target1 overwritten value'
@@ -105,3 +107,15 @@ module.exports.overwrite = {
 		}
 	}
 };
+
+module.exports.merged = {
+    task1 : overwrite.tasks.task1,
+    task2 : {
+        target1 : {
+            value1 : overwrite.tasks.task2.target1.value1,
+            value2 : overwrite.tasks.task2.target1.value2,
+            value3 : passedin.task2.target1.value3
+        },
+        target2 : passedin.task2.target2
+    }
+}

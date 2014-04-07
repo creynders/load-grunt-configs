@@ -72,8 +72,8 @@ exports['should parse colon-joined properties'] = function(test){
 exports['should overwrite passed in task configs'] = function(test){
 	test.expect(2);
 	var actual = loadGruntConfigs(stubs.grunt(['overwrite']), configs.passedin);
-	test.deepEqual(actual.task1, configs.overwrite.tasks.task1);
-	test.deepEqual(actual.task2, configs.overwrite.tasks.task2);
+    test.deepEqual(actual.task1, configs.merged.task1);
+	test.deepEqual(actual.task2, configs.merged.task2);
 	test.done();
 };
 
