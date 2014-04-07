@@ -1,5 +1,3 @@
 module.exports = (grunt, options) ->
-    return {
-        config : [ 'config' ],
-        tmp: [ '.tmp' ]
-    }
+    config : [ 'config' ],
+    tmp: [ '.tmp' ]
