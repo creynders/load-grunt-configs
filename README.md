@@ -405,6 +405,10 @@ module.exports = function(grunt, options) {
 
 ## Changelog
 
+#### v0.4.0
+
+* Switch to cson-safe for parsing cson
+
 #### v0.3.3
 
 * Add cson support
@@ -439,6 +443,11 @@ module.exports = function(grunt, options) {
 * adds "by taskname" demo
 * adds "single file" demo
 * Initial commit
+
+## Contributors
+
+* [Camille Reynders](https://github.com/creynders)
+* [Jan Raasch](https://github.com/janraasch)
 
 ## License
 Copyright (c) 2014 Camille Reynders
