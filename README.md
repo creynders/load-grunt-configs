@@ -405,44 +405,30 @@ module.exports = function(grunt, options) {
 
 ## Changelog
 
-#### v0.4.0
-
-* Switch to cson-safe for parsing cson
-
-#### v0.3.3
-
-* Add cson support
-* Loads yaml files with safeLoad
-
-#### v0.3.2
-
-* fixes incorrect grunt dep
-* adds coffee config file
-* adds yaml support
-
-#### v0.3.1
-
-* fixes incorrect overwrite of passedin options for this task
-* adds tests
-* Updates examples and adds all various configuration possibilities
-
-#### v0.3.0
-
-* disallows function declaration anywhere else than as direct export
-* extracts taskname regardless of file extension
-
-#### v0.2.0
-
-* adds coffeescript support
-* adds parsing of taskname prefixed task targets
-* fixes incorrect handling of functions at task config leaves
-
-#### v0.1.0
-
-* adds "by type' demo
-* adds "by taskname" demo
-* adds "single file" demo
-* Initial commit
+* __v0.4.0__: Switch to cson-safe for parsing cson
+* __v0.3.3__:
+    * Add cson support
+    * Loads yaml files with safeLoad
+* __v0.3.2__:
+    * fixes incorrect grunt dep
+    * adds coffee config file
+    * adds yaml support
+* __v0.3.1__:
+    * fixes incorrect overwrite of passedin options for this task
+    * adds tests
+    * Updates examples and adds all various configuration possibilities
+* __v0.3.0__:
+    * disallows function declaration anywhere else than as direct export
+    * extracts taskname regardless of file extension
+* __v0.2.0__:
+    * adds coffeescript support
+    * adds parsing of taskname prefixed task targets
+    * fixes incorrect handling of functions at task config leaves
+* __v0.1.0__:
+    * adds "by type' demo
+    * adds "by taskname" demo
+    * adds "single file" demo
+    * Initial commit
 
 ## Contributors
 
