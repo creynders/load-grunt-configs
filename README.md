@@ -68,8 +68,18 @@ I wrote a small utility Grunt task which takes your full-blown Grunt configurati
 
 ```shell
 npm install grunt-generate-configs
-grunt generate-configs
 ```
+
+Temporarily add this to your `Gruntfile.js`:
+
+    grunt.loadNpmTasks('grunt-generate-configs');
+
+And then run:
+
+```shell
+grunt generate_configs
+```
+
 
 This will create a separate `.json` file for each task inside a `config` directory. (See [grunt-generate-configs][grunt-generate-configs] for all options: a different format, directory, etc.)
 
