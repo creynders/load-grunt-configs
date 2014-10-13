@@ -233,6 +233,43 @@ module.exports.tasks = {
 
 This makes it easier when in the future you'd like to move the `watch:gruntfile` task configuration to another file for instance.
 
+### Troubleshooting
+
+The tradeoff of a neatly organized Grunt configuration is sometimes having trouble locating which file is declaring exactly what.
+
+In that case, or if loading some file is causing an error and aborting your Grunt process, you can always run:
+
+```shell
+grunt --verbose
+```
+
+A nice log of processed files and loaded tasks/targets will help you locate the problems. Here's the output when running
+on this very repo:
+
+
+```
+Loading grunt configs via "load-grunt-configs" from 6 file(s).
+Loading config/connect.js...is fn(), invoking...OK
++ connect: [options, docs]
+
+Loading config/jshint.json...OK
++ jshint: [options, lib, build, test]
+
+Loading config/watch.js...is fn(), invoking...OK
++ watch: [lib, build, test, docs, livereload]
+
+Loading config/clean.coffee...is fn(), invoking...OK
++ clean: [config, tmp]
+
+Loading config/nodeunit.yml...OK
++ nodeunit: [load_grunt_configs]
+
+Loading config/markdown.cson...OK
++ markdown: [docs]
+
+```
+
+
 ## Options
 
 You can modify the directory in which the configuration files need to reside:
