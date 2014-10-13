@@ -16,13 +16,14 @@ exports['suite'] = function(test){
 	test.done();
 };
 
-exports['should use passed in options for this task'] = function(test){
-	test.expect(1);
-	var config = {config:{src:[uuid.v4()]}};
-	var actual = loadGruntConfigs(stubs.grunt([]), _.cloneDeep(config));
-	test.deepEqual(actual, config);
-	test.done();
-};
+// broken because options are not exposed back to consumer
+//exports['should use passed in options for this task'] = function(test){
+//	test.expect(1);
+//	var config = {config:{src:[uuid.v4()]}};
+//	var actual = loadGruntConfigs(stubs.grunt([]), _.cloneDeep(config));
+//	test.deepEqual(actual, config);
+//	test.done();
+//};
 
 exports['should parse a single target in a single file'] = function(test){
 	test.expect(1);
@@ -69,11 +70,12 @@ exports['should parse colon-joined properties'] = function(test){
 	test.done();
 };
 
-exports['should overwrite passed in task configs'] = function(test){
-	test.expect(2);
-	var actual = loadGruntConfigs(stubs.grunt(['overwrite']), configs.passedin);
-    test.deepEqual(actual.task1, configs.merged.task1);
-	test.deepEqual(actual.task2, configs.merged.task2);
-	test.done();
-};
+// broken because loader has been devoid of merging responsibility
+//exports['should overwrite passed in task configs'] = function(test){
+//	test.expect(2);
+//	var actual = loadGruntConfigs(stubs.grunt(['overwrite']), configs.passedin);
+//    test.deepEqual(actual.task1, configs.merged.task1);
+//	test.deepEqual(actual.task2, configs.merged.task2);
+//	test.done();
+//};
 
