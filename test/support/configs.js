@@ -118,4 +118,4 @@ module.exports.merged = {
         },
         target2 : passedin.task2.target2
     }
-}
+};
