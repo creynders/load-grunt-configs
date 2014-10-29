@@ -56,7 +56,6 @@
     "lodash": "~2.4.1",
     "inquirer": "~0.4.0",
     "js-yaml": "~3.0.1",
-    "js2coffee": "~0.2.7",
     "rimraf": "~2.2.6",
     "cson-safe": "^0.1.1"
   }
