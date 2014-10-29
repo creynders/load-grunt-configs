@@ -472,6 +472,7 @@ module.exports = function(grunt, options) {
 
 * [Camille Reynders](https://github.com/creynders)
 * [Jan Raasch](https://github.com/janraasch)
+* [Andre Torgal](https://github.com/andrezero)
 
 ## License
 Copyright (c) 2014 Camille Reynders
