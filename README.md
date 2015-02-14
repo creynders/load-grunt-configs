@@ -1,6 +1,6 @@
 # load-grunt-configs 
 [![npm version](https://badge.fury.io/js/load-grunt-configs.svg)](http://badge.fury.io/js/load-grunt-configs)
-[![Build Status](https://secure.travis-ci.org/creynders/load-grunt-configs.png?branch=master)](http://travis-ci.org/creynders/load-grunt-configs)
+[![Build Status](https://secure.travis-ci.org/creynders/load-grunt-configs.svg?branch=master)](http://travis-ci.org/creynders/load-grunt-configs)
 
 > Loads grunt task configurations from separate files.
 
