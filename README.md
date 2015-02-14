@@ -445,6 +445,8 @@ module.exports = function(grunt, options) {
 
 ## Changelog
 
+* __v0.4.2__: Explicit bailing on invalid task config
+* __v0.4.1__: Better verbose output
 * __v0.4.0__: Switch to cson-safe for parsing cson
 * __v0.3.3__:
     * Add cson support
