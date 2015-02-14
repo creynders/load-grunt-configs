@@ -17,6 +17,9 @@ module.exports.grunt = function(files){
 		},
         option : function(){
             return false;
+        },
+        verbose : {
+            write : function(){}
         }
 	};
 };
