@@ -289,6 +289,24 @@ configs = require('load-grunt-configs')(grunt, options);
 
 Will search for the configuration files in an `options` directory.
 
+You can also supply a customizer function for the configuration merging:
+
+```javascript
+//Gruntfile.js
+var options = {
+    config : {
+        mergeCustomizer: function(a, b) {
+            return Array.isArray(a) ? a.concat(b) : undefined;
+        }
+    }
+};
+
+configs = require('load-grunt-configs')(grunt, options);
+```
+
+See [lodash#merge](https://lodash.com/docs#merge) for more information on the customizer function.
+
+
 ## Examples
 
 You can take a look at the `Gruntfile.js` and the configuration files in the `config` directory of this project.
