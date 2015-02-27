@@ -18,7 +18,7 @@ exports['suite'] = function(test){
 
 exports['should use passed in options for this task'] = function(test){
 	test.expect(1);
-	var config = {config:{src:[uuid.v4()]}};
+	var config = {config:{src:[uuid.v4()],mergeCustomizer:function(){return undefined;}}};
 	var actual = loadGruntConfigs(stubs.grunt([]), _.cloneDeep(config));
 	test.deepEqual(actual, config);
 	test.done();
