@@ -1,4 +1,4 @@
-# load-grunt-configs 
+# load-grunt-configs
 [![npm version](https://badge.fury.io/js/load-grunt-configs.svg)](http://badge.fury.io/js/load-grunt-configs)
 [![Build Status](https://secure.travis-ci.org/creynders/load-grunt-configs.svg?branch=master)](http://travis-ci.org/creynders/load-grunt-configs)
 
@@ -195,7 +195,7 @@ Now both `watch` and `jshint` tasks have two targets: `gruntfile` and `test`.
 If you declare a function in your config file it receives two arguments: `grunt` and `options`, which allows you to use the `grunt` instance and pass values.
 
 ```javascript
-//Gruntfile.js
+// Gruntfile.js
 var options = {
     paths: {
         jshintrc: '.jshintrc'
@@ -204,13 +204,17 @@ var options = {
 
 var configs = require('load-grunt-configs')(grunt, options);
 
-//config/jshint.js
+// config/jshint.js
 module.exports = function(grunt, options){
-     return {
-         gruntfile       : {
-             src : "Gruntfile.js"
-         }
-     };
+    return {
+        options: {
+            jshintrc: '<%= paths.jshintrc %>'
+        },
+
+        gruntfile: {
+            src: 'Gruntfile.js'
+        }
+    };
 }
 ```
 
