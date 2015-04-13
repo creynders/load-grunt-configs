@@ -467,6 +467,10 @@ module.exports = function(grunt, options) {
 
 ## Changelog
 
+* __v0.4.3__:
+    * Update dependencies
+    * Swap cson-safe to cson-parser
+    * add `mergeCustomizer`
 * __v0.4.2__: Explicit bailing on invalid task config
 * __v0.4.1__: Better verbose output
 * __v0.4.0__: Switch to cson-safe for parsing cson
