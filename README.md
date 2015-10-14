@@ -193,6 +193,7 @@ Now both `watch` and `jshint` tasks have two targets: `gruntfile` and `test`.
 ### Passing values to the configuration files
 
 If you declare a function in your config file it receives two arguments: `grunt` and `options`, which allows you to use the `grunt` instance and pass values.
+In this way, you can declare custom tasks on your config files (especially useful if you follow the "Split multi-task configurations" method above).
 
 ```javascript
 // Gruntfile.js
@@ -206,6 +207,8 @@ var configs = require('load-grunt-configs')(grunt, options);
 
 // config/jshint.js
 module.exports = function(grunt, options){
+    grunt.registerTask('custom', ['jshint:gruntfile']);
+
     return {
         options: {
             jshintrc: '<%= paths.jshintrc %>'
@@ -217,6 +220,8 @@ module.exports = function(grunt, options){
     };
 }
 ```
+
+
 
 ### Task name prefixed task targets
 
