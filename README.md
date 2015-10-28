@@ -505,11 +505,14 @@ module.exports = function(grunt, options) {
 
 ## Contributors
 
-* [Camille Reynders](https://github.com/creynders)
-* [Jan Raasch](https://github.com/janraasch)
-* [Andre Torgal](https://github.com/andrezero)
-* [Cody Mize](https://github.com/kingcody)
-* [Jan Olaf Krems](https://github.com/jkrems)
+* [creynders](https://github.com/creynders)
+* [janraasch](https://github.com/janraasch)
+* [andrezero](https://github.com/andrezero)
+* [kingcody](https://github.com/kingcody)
+* [jkrems](https://github.com/jkrems)
+* [henriquesilverio](https://github.com/HenriqueSilverio)
+* [gianos](https://github.com/gianos)
+* [varemenos](https://github.com/varemenos)
 
 ## License
 Copyright (c) 2014 Camille Reynders
