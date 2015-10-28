@@ -352,7 +352,7 @@ E.g. `build.js`, `serve.js`, `test.js`
         "watch" : {
             "gruntfile"       : {
                 "src" : "Gruntfile.js",
-                "tasks" : ['jshint:gruntfile']
+                "tasks" : ["jshint:gruntfile"]
             }
         }
     }
@@ -369,7 +369,7 @@ E.g. `build.js`, `serve.js`, `test.js`
         },
         "watch:gruntfile"       : {
             "src" : "Gruntfile.js",
-            "tasks" : ['jshint:gruntfile']
+            "tasks" : ["jshint:gruntfile"]
         }
     }
 }
