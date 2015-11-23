@@ -18,15 +18,15 @@ you use the `watch` task to recompile your `.scss` files, but also to lint your 
 
 //config/css.js
 
-module.exports.tasks={
-    watch:{
-        scss: {
-            files: ['app/sass/*.{scss,sass}'],
-            tasks: ['compass:source']
+module.exports.tasks = {
+    watch : {
+        scss : {
+            files : ['app/sass/*.{scss,sass}'],
+            tasks : ['compass:source']
         }
     },
-    compass:{
-        source:{
+    compass : {
+        source : {
             //configuration settings
         }
     }
@@ -36,13 +36,13 @@ module.exports.tasks={
 
 module.exports.tasks = {
     watch : {
-        lint: {
-            files: ['app/{,*/}*.js']
-            tasks: ['jshint:source']
+        lint : {
+            files : ['app/{,*/}*.js']
+            tasks : ['jshint:source']
         }
     },
-    jshint: {
-        source: {
+    jshint : {
+        source : {
             //configuration settings
         }
     }
@@ -103,7 +103,7 @@ To configure the `jshint` task for example, add a file `config/jshint.json` (in 
 
 ```json
 {
-    "gruntfile"       : {
+    "gruntfile" : {
         "src" : "Gruntfile.js"
     }
 }
@@ -120,7 +120,7 @@ Task configuration is also possible through node modules, either by exposing an 
 ```javascript
 //config/jshint.js
 module.exports = {
-     gruntfile       : {
+     gruntfile : {
          src : "Gruntfile.js"
      }
  }
@@ -130,9 +130,9 @@ module.exports = {
 
 ```javascript
 //config/jshint.js
-module.exports = function(grunt, options){
+module.exports = function(grunt, options) {
      return {
-         gruntfile       : {
+         gruntfile : {
              src : "Gruntfile.js"
          }
      }
@@ -148,12 +148,12 @@ If the returned object contains a `tasks` key, its value will be assumed to be a
 {
     "tasks" : {
         "jshint" : {
-            "gruntfile"       : {
+            "gruntfile" : {
                 "src" : "Gruntfile.js"
             }
         },
-        "watch" : {
-            "gruntfile"       : {
+        "watch"  : {
+            "gruntfile" : {
                 "src" : "Gruntfile.js",
                 "tasks" : ['jshint:gruntfile']
             }
@@ -172,10 +172,10 @@ For instance if you have the above `config/grunt.json` file and you add the foll
 ```javascript
 //config/test.json
 {
-    "tasks": {
+    "tasks" : {
         "jshint" : {
-            "test": {
-                "src": ["test/**/*.js"]
+            "test" : {
+                "src" : ["test/**/*.js"]
             }
         }
         "watch" : {
@@ -198,24 +198,24 @@ In this way, you can declare custom tasks on your config files (especially usefu
 ```javascript
 // Gruntfile.js
 var options = {
-    paths: {
-        jshintrc: '.jshintrc'
+    paths : {
+        jshintrc : '.jshintrc'
     }
 };
 
 var configs = require('load-grunt-configs')(grunt, options);
 
 // config/jshint.js
-module.exports = function(grunt, options){
+module.exports = function(grunt, options) {
     grunt.registerTask('custom', ['jshint:gruntfile']);
 
     return {
-        options: {
-            jshintrc: '<%= paths.jshintrc %>'
+        options : {
+            jshintrc : '<%= paths.jshintrc %>'
         },
 
-        gruntfile: {
-            src: 'Gruntfile.js'
+        gruntfile : {
+            src : 'Gruntfile.js'
         }
     };
 }
@@ -234,7 +234,7 @@ module.exports.tasks = {
         src : ["test/**/*.js"],
         tasks : ['jshint:test']
     },
-    "watch:gruntfile"       : {
+    "watch:gruntfile" : {
         src : "Gruntfile.js",
         tasks : ['jshint:gruntfile']
     }
@@ -289,7 +289,7 @@ You can modify the directory in which the configuration files need to reside:
 //Gruntfile.js
 var options = {
     config : {
-        src: "options/*.js"
+        src : "options/*.js"
     }
 };
 
@@ -304,7 +304,7 @@ You can also supply a customizer function for the configuration merging:
 //Gruntfile.js
 var options = {
     config : {
-        mergeCustomizer: function(a, b) {
+        mergeCustomizer : function(a, b) {
             return Array.isArray(a) ? a.concat(b) : undefined;
         }
     }
@@ -333,7 +333,7 @@ E.g. `build.js`, `serve.js`, `test.js`
 
 ```json
 {
-    "gruntfile"       : {
+    "gruntfile" : {
         "src" : "Gruntfile.js"
     }
 }
@@ -345,12 +345,12 @@ E.g. `build.js`, `serve.js`, `test.js`
 {
     "tasks" : {
         "jshint" : {
-            "gruntfile"       : {
+            "gruntfile" : {
                 "src" : "Gruntfile.js"
             }
         },
         "watch" : {
-            "gruntfile"       : {
+            "gruntfile" : {
                 "src" : "Gruntfile.js",
                 "tasks" : ["jshint:gruntfile"]
             }
@@ -364,10 +364,10 @@ E.g. `build.js`, `serve.js`, `test.js`
 ```json
 {
     "tasks" : {
-        "jshint:gruntfile"       : {
+        "jshint:gruntfile" : {
             "src" : "Gruntfile.js"
         },
-        "watch:gruntfile"       : {
+        "watch:gruntfile" : {
             "src" : "Gruntfile.js",
             "tasks" : ["jshint:gruntfile"]
         }
@@ -379,7 +379,7 @@ E.g. `build.js`, `serve.js`, `test.js`
 
 ```javascript
 module.exports = {
-     gruntfile       : {
+     gruntfile : {
          src : "Gruntfile.js"
      }
 };
@@ -388,9 +388,9 @@ module.exports = {
 * **js with single task configuration as a function**: E.g. configures `jshint` task in `config/jshint.js`
 
 ```javascript
-module.exports = function(grunt, options){
+module.exports = function(grunt, options) {
     return {
-        gruntfile       : {
+        gruntfile : {
             src : "Gruntfile.js"
         }
     };
@@ -401,13 +401,13 @@ module.exports = function(grunt, options){
 
 ```javascript
 module.exports.tasks = { //note the `tasks` export here [!]
-    jshint: {
-        gruntfile       : {
+    jshint : {
+        gruntfile : {
             src : "Gruntfile.js"
         }
     },
     watch : {
-        gruntfile       : {
+        gruntfile : {
             src : "Gruntfile.js",
             tasks : ['jshint:gruntfile']
         }
@@ -421,14 +421,14 @@ module.exports.tasks = { //note the `tasks` export here [!]
 ```javascript
 module.exports = function(grunt, options) {
     return {
-        tasks:{
-            jshint: {
-                gruntfile       : {
+        tasks : {
+            jshint : {
+                gruntfile : {
                     src : "Gruntfile.js"
                 }
             },
             watch : {
-                gruntfile       : {
+                gruntfile : {
                     src : "Gruntfile.js",
                     tasks : ['jshint:gruntfile']
                 }
@@ -442,10 +442,10 @@ module.exports = function(grunt, options) {
 
 ```javascript
 module.exports.tasks = { //note the `tasks` export here [!]
-    "jshint:gruntfile"       : {
+    "jshint:gruntfile" : {
         src : "Gruntfile.js"
     },
-    "watch:gruntfile"       : {
+    "watch:gruntfile" : {
             src : "Gruntfile.js",
             tasks : ['jshint:gruntfile']
     }
@@ -457,11 +457,11 @@ module.exports.tasks = { //note the `tasks` export here [!]
 ```javascript
 module.exports = function(grunt, options) {
     return {
-        tasks:{
-            "jshint:gruntfile"       : {
+        tasks : {
+            "jshint:gruntfile" : {
                 src : "Gruntfile.js"
             },
-            "watch:gruntfile"       : {
+            "watch:gruntfile" : {
                 src : "Gruntfile.js",
                 tasks : ['jshint:gruntfile']
             }
