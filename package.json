@@ -23,7 +23,8 @@
   ],
   "main": "lib/load-grunt-configs",
   "scripts": {
-    "test": "grunt nodeunit"
+    "test": "grunt nodeunit",
+    "serve:docs": "grunt serve:docs"
   },
   "engines": {
     "node": ">= 0.10.0"
@@ -32,11 +33,13 @@
     "lib"
   ],
   "devDependencies": {
-    "grunt-contrib-clean": "^0.6.0",
-    "grunt-contrib-connect": "^0.10.1",
-    "grunt-contrib-jshint": "^0.11.1",
-    "grunt-contrib-nodeunit": "^0.4.1",
-    "grunt-contrib-watch": "^0.6.1",
+    "grunt": "^1.0.1",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-connect": "^1.0.1",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-nodeunit": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
     "grunt-markdown": "^0.7.0",
     "load-grunt-tasks": "^3.1.0",
     "minimist": "^1.1.1",
