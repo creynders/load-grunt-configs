@@ -249,7 +249,7 @@ This makes it easier when in the future you'd like to move the `watch:gruntfile`
 
 if you want to register a custom task and use `load-grunt-config` to load it automatically you just need to return your registered task as a configuration:
 
-```jaavascript
+```javascript
 //config/task.runAllTheThings.js
 module.exports = {
     return grunt.registerTask('runAllTheThings', 'this task runs all the things', function(){
