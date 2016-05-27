@@ -244,6 +244,20 @@ module.exports.tasks = {
 
 This makes it easier when in the future you'd like to move the `watch:gruntfile` task configuration to another file for instance.
 
+
+### Using load-grunt-configs for custom tasks
+
+if you want to register a custom task and use `load-grunt-config` to load it automatically you just need to return your registered task as a configuration:
+
+```jaavascript
+//config/task.runAllTheThings.js
+module.exports = {
+    return grunt.registerTask('runAllTheThings', 'this task runs all the things', function(){
+        grunt.task.run(['jshint', 'clean', 'uglify']);
+    });
+}
+```
+
 ### Troubleshooting
 
 The tradeoff of a neatly organized Grunt configuration is sometimes having trouble locating which file is declaring exactly what.
