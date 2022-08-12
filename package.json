@@ -1,12 +1,12 @@
 {
   "name": "load-grunt-configs",
   "description": "Loads grunt task configurations from separate files",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "homepage": "http://creynders.github.io/load-grunt-configs/",
   "author": {
     "name": "Camille Reynders",
     "email": "info@creynders.be",
-    "url": "www.creynders.be"
+    "url": "https://github.com/creynders"
   },
   "repository": {
     "type": "git",
