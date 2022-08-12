@@ -57,7 +57,7 @@
   ],
   "dependencies": {
     "cson-parser": "^1.0.9",
-    "inquirer": "^0.8.2",
+    "inquirer": "^9.1.0",
     "js-yaml": "^3.2.7",
     "lodash": "^3.6.0",
     "rimraf": "^2.3.2"
