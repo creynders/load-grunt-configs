@@ -1,12 +1,12 @@
 {
   "name": "load-grunt-configs",
   "description": "Loads grunt task configurations from separate files",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "homepage": "http://creynders.github.io/load-grunt-configs/",
   "author": {
     "name": "Camille Reynders",
     "email": "info@creynders.be",
-    "url": "www.creynders.be"
+    "url": "https://github.com/creynders"
   },
   "repository": {
     "type": "git",
@@ -33,18 +33,18 @@
     "lib"
   ],
   "devDependencies": {
-    "grunt": "^1.0.1",
-    "grunt-cli": "^1.2.0",
-    "grunt-contrib-clean": "^1.0.0",
-    "grunt-contrib-connect": "^1.0.1",
-    "grunt-contrib-jshint": "^1.0.0",
-    "grunt-contrib-nodeunit": "^1.0.0",
-    "grunt-contrib-watch": "^1.0.0",
+    "grunt": "^1.5.3",
+    "grunt-cli": "^1.4.3",
+    "grunt-contrib-clean": "^2.0.1",
+    "grunt-contrib-connect": "^3.0.0",
+    "grunt-contrib-jshint": "^3.2.0",
+    "grunt-contrib-nodeunit": "^4.0.0",
+    "grunt-contrib-watch": "^1.1.0",
     "grunt-markdown": "^0.7.0",
-    "load-grunt-tasks": "^3.1.0",
-    "minimist": "^1.1.1",
-    "node-uuid": "~1.4.1",
-    "proxyquire": "^1.4.0"
+    "load-grunt-tasks": "^5.1.0",
+    "minimist": "^1.2.6",
+    "node-uuid": "^1.4.8",
+    "proxyquire": "^2.1.3"
   },
   "peerDependencies": {
     "grunt": ">=0.4.0"
@@ -56,10 +56,10 @@
     "configuration"
   ],
   "dependencies": {
-    "cson-parser": "^1.0.9",
-    "inquirer": "^0.8.2",
-    "js-yaml": "^3.2.7",
-    "lodash": "^3.6.0",
-    "rimraf": "^2.3.2"
+    "cson-parser": "^4.0.9",
+    "inquirer": "^9.1.0",
+    "js-yaml": "^4.1.0",
+    "lodash": "^4.17.21",
+    "rimraf": "^3.0.2"
   }
 }
